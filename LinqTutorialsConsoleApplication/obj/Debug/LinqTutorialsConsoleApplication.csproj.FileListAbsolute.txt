@@ -4,3 +4,9 @@ C:\bing\LinqTutorialsSolution\LinqTutorialsConsoleApplication\bin\Debug\LinqTuto
 C:\bing\LinqTutorialsSolution\LinqTutorialsConsoleApplication\obj\Debug\LinqTutorialsConsoleApplication.csprojResolveAssemblyReference.cache
 C:\bing\LinqTutorialsSolution\LinqTutorialsConsoleApplication\obj\Debug\LinqTutorialsConsoleApplication.exe
 C:\bing\LinqTutorialsSolution\LinqTutorialsConsoleApplication\obj\Debug\LinqTutorialsConsoleApplication.pdb
+F:\dotnet\LinqTutorial\LinqTutorialsConsoleApplication\bin\Debug\LinqTutorialsConsoleApplication.exe.config
+F:\dotnet\LinqTutorial\LinqTutorialsConsoleApplication\obj\Debug\LinqTutorialsConsoleApplication.exe
+F:\dotnet\LinqTutorial\LinqTutorialsConsoleApplication\obj\Debug\LinqTutorialsConsoleApplication.pdb
+F:\dotnet\LinqTutorial\LinqTutorialsConsoleApplication\bin\Debug\LinqTutorialsConsoleApplication.exe
+F:\dotnet\LinqTutorial\LinqTutorialsConsoleApplication\bin\Debug\LinqTutorialsConsoleApplication.pdb
+F:\dotnet\LinqTutorial\LinqTutorialsConsoleApplication\obj\Debug\LinqTutorialsConsoleApplication.csprojResolveAssemblyReference.cache

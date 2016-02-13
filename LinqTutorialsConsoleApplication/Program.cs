@@ -9,6 +9,11 @@ namespace LinqTutorialsConsoleApplication
 {
     class Program
     {
+        static void LearnLinq()
+        {
+            LearnLinq learnLinq = new LearnLinq();
+            learnLinq.Partioning();
+        }
         private static void LearnDelegates()
         {
             LearnDelegates learnDelegates = new LearnDelegates();
@@ -16,7 +21,8 @@ namespace LinqTutorialsConsoleApplication
         }
         static void Main(string[] args)
         {
-            LearnDelegates();
+            //LearnDelegates();
+            LearnLinq();
             Console.WriteLine("finished");
             Console.ReadKey();
         }
