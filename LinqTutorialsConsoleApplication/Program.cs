@@ -12,7 +12,7 @@ namespace LinqTutorialsConsoleApplication
         static void LearnLinq()
         {
             LearnLinq learnLinq = new LearnLinq();
-            learnLinq.Partioning();
+            learnLinq.Grouping();
         }
         private static void LearnDelegates()
         {

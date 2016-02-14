@@ -35,9 +35,9 @@ namespace LinqTutorialsConsoleApplication.Logic
         {
             Student[] students = new Student[]
             {
-                new Student("sid", "s1", 100, 100,23),
-                  new Student("pin", "p1", 99, 99,25),
-                    new Student("rak", "r1", 98, 100,29)
+                new Student("sid", "s1", 100, 100,23, "3"),
+                  new Student("pin", "p1", 99, 99,25, "4"),
+                    new Student("rak", "r1", 98, 100,29, "5")
             };
 
             Console.WriteLine("====student who scored 100 in math========");

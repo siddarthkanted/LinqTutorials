@@ -91,10 +91,60 @@ namespace LinqTutorialsConsoleApplication.Logic
         /// takewhile keep on taking till you find an element where the condition is false.
         /// skipwhile keep on skiping till you find an element where the condition is false.
         /// Partioning keeps flowing continuous.
+        /// 
+        /// application is pagination. there are 4 pages display 3 students in each page.
+        /// list.skip(pageNumber*3).take(3);
+        /// pageNumber 0 => list.skip(0*3).take(3)
+        /// pageNumber 1 => list.skip(1*3).take(3)
         /// </summary>
         public void Partioning()
         {
             studentList.SkipWhile(x => x.StudentMathsMark == 100).ToList().ForEach(x => Console.WriteLine(x.StudentName));
+        }
+
+        /// <summary>
+        /// 1. ToList => convert the result to list.
+        /// 2. ToArray =>
+        /// 3. ToDictionary => if 1 argumeent. The argument is key and object is value. If 2 argument 1st argument key 2nd argument value.
+        /// 4. ToLookup => same as dictionary. In dictionary the keys should be unique. In Look up keys need not be unique. Lookup is similary to adjacency list.
+        /// 5. Cast => convert all the values in result to another data type. if any value does not get converted then throw exception.  
+        /// 6. Type => same as cast. if any value does not get converted then dont throw exception instead ignore it.
+        /// 7. IEnumerable=>
+        /// 8. IQueryable=>
+        /// 
+        /// If you do studentDBIEnumerable.where(s.name.equals("sid")) then the sql query will be select * from studentDB.
+        /// the matching with "sid" wont be done in db, it would be done in c#. so db has to pass all the records to c#.
+        /// 
+        /// In studentDBIQueryable.where(s.name.equals("sid")) sql query is select * from studentDB where name=="sid".
+        /// the matching with "sid" is done in db. so db has to pass only records that match "sid" to c#.
+        /// 
+        /// For performance, whenever dealing with db use IQueryable as it will pass less records from db to c#.
+        /// </summary>
+        public void Conversion()
+        {
+            Lookup<string, Student> lookup = (Lookup<string,Student>)studentList.ToLookup(x => x.StudentName, x=>x);
+            lookup["sid"].ToList().ForEach(x => Console.WriteLine(x.StudentId));
+        }
+
+        /// <summary>
+        /// question => Find the count of students studying in IT Department
+        /// answer => group studentList on department=="it" then do a count on it.
+        /// </summary>
+        public void Grouping()
+        {
+            //group by single key
+            List<IGrouping<string, Student>> group = studentList.GroupBy(x => x.StudentClass).ToList();
+            group.ForEach(x => Console.WriteLine(x.Key + ".." +x.ToList().Select(a=>a.StudentName).Aggregate((a,b) => agg(a,b))));
+
+            //group by multiple key
+            var mulgroup = studentList.GroupBy(x => new { x.StudentClass, x.StudentName }).ToList();
+            mulgroup.ForEach(x => Console.WriteLine(x.Key + ".." + x.ToList().Select(a => a.StudentName).Aggregate((a, b) => agg(a, b))));
+
+        }
+
+        public string agg(string a, string b)
+        {
+            return a + ".." + b;
         }
     }
 }
