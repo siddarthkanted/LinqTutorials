@@ -146,5 +146,44 @@ namespace LinqTutorialsConsoleApplication.Logic
         {
             return a + ".." + b;
         }
+
+        /// <summary>
+        ///  A={(1,A), (2,B), (3,C)} P={(1,P), (2,Q), (4,R)}
+        ///  inner join {(1,A,P), (2,B,Q)}
+        ///  left outer {(1,A,P), (2,B,Q), (3,C, NULL)}
+        ///  right outer {(1,A,P), (2,B,Q), (4,NULL,R)}
+        ///  full outer {(1,A,P), (2,B,Q), (3,C, NULL), (4,NULL,R)}
+        ///  cartesian or cross over {(1,A,P),(1,A,Q),(1,A,R) 
+        ///                           (2,B,P),(2,B,Q),(2,B,R)
+        ///                           (3,C,P), (3,C,Q),(3,C,R)}
+        /// </summary>
+        public void joins()
+        {
+            List<Tuple<int, string>> AList = new List<Tuple<int, string>>
+            {
+                new Tuple<int, string>(1,"A"),
+                new Tuple<int, string>(2,"B"),
+                new Tuple<int, string>(3,"C"),
+            };
+
+            List<Tuple<int, string>> PList = new List<Tuple<int, string>>
+            {
+                new Tuple<int, string>(1,"P"),
+                new Tuple<int, string>(2,"Q"),
+                new Tuple<int, string>(4,"R"),
+            };
+
+            
+            Console.WriteLine("==========inner join=====");
+            Enumerable.Join(PList, AList, b => b.Item1, a => a.Item1, (b, a) => new Tuple<int, string, int, string>(a.Item1, a.Item2, b.Item1, b.Item2)).ToList().ForEach(x=>Console.WriteLine(x.Item1+".."+x.Item2+".."+x.Item3+".."+x.Item4));
+
+            Console.WriteLine("==========cartesian =====");
+            Enumerable.Join(PList, AList, b => true, a => true, (b, a) => new Tuple<int, string, int, string>(a.Item1, a.Item2, b.Item1, b.Item2)).ToList().ForEach(x => Console.WriteLine(x.Item1 + ".." + x.Item2 + ".." + x.Item3 + ".." + x.Item4));
+
+            //if the outer is PList then it becomes right outer join
+            //if the outer is AList then it becomes left outer join
+            Console.WriteLine("==========outer join =====");
+            Enumerable.GroupJoin(AList, PList, b => b.Item1, a => a.Item1, (b, a) => new Tuple<string, int, string>(String.Join(String.Empty, a.ToList().Select(x => x.Item2)), b.Item1, b.Item2)).ToList().ForEach(x => Console.WriteLine(x.Item1 + ".." + x.Item2 + ".." + x.Item3 + ".."));
+        }
     }
 }
